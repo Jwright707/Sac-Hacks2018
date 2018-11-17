@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class List extends Component {
+class List2 extends Component {
   // Initialize the state
   constructor(props) {
     super(props);
@@ -16,7 +16,7 @@ class List extends Component {
 
   // Retrieves the list of items from the Express app
   getList = () => {
-    alert("function to send to back end");
+    console.log("function to send to back end");
   };
 
   render() {
@@ -24,7 +24,7 @@ class List extends Component {
 
     return (
       <div className="App">
-        <h1>Create</h1>
+        <h1>Search</h1>
         {/* Check to see if any items are found*/}
         {list.length ? (
           <div>
@@ -43,4 +43,4 @@ class List extends Component {
   }
 }
 
-export default List;
+export default List2;
