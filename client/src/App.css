@@ -1,0 +1,14 @@
+.App-Header {
+  text-align: center;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-ser;
+  font-style: italic;
+  font-size: 300%;
+}
+
+.App {
+  text-align: center;
+}
+
+.LineBreak {
+  opacity: 0.2;
+}

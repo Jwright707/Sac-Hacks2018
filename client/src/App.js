@@ -4,11 +4,13 @@ import "./App.css";
 import Home from "./pages";
 import List from "./list";
 import List2 from "./list2";
+import Header from "./header";
 
 class App extends Component {
   render() {
     const App = () => (
       <div>
+        <Header />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/list" component={List} />
