@@ -3,13 +3,8 @@
   "version": "0.1.0",
   "private": false,
   "dependencies": {
-<<<<<<< HEAD
     "axios": "^0.18.0",
     "http-proxy-middleware": "^0.19.0",
-||||||| merged common ancestors
-    "http-proxy-middleware": "^0.19.0",
-=======
->>>>>>> be954590512682d97d1bdf1c6d287211b1f19a42
     "react": "^16.6.3",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.3",
