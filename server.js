@@ -35,19 +35,11 @@ mongoose.set('useCreateIndex', true);
 
 app.use('/api/quests/', questRoutes);
 
-// app.use((req, res, next) => {
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     res.setHeader('X-Content-Type-Options: nosniff');
-//     res.setHeader(
-//         'Access-Control-Allow-Headers',
-//         'Origin, X-Requested-With, X-Content-Type-Options: nosniff, Accept, Authorization'
-//     );
-//     res.setHeader(
-//         'Access-Control-Allow-Methods',
-//         'GET, POST, PATCH, PUT, DELETE, OPTIONS'
-//     );
-//     next();
-// });
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    next();
+});
 
 
 const SMARTCAR_CLIENT_ID = envvar.string('SMARTCAR_CLIENT_ID');
@@ -100,10 +92,10 @@ app.set('view engine', '.hbs');
  */
 app.get('/car', function (req, res, next) {
 
-    res.render('home', {
+    res.json([{
         authUrl: client.getAuthUrl(),
         testMode: SMARTCAR_MODE === 'test',
-    });
+    }]);
 
 });
 

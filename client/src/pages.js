@@ -13,7 +13,7 @@ import {
   Col
 } from "reactstrap";
 import "./pages.css";
-// import "./pages.css";
+
 class Home extends Component {
   render() {
     return (
@@ -66,7 +66,7 @@ class Home extends Component {
                     </CardTitle>
                     <CardSubtitle />
                     <CardText>
-                      Get rewarded to expereiencing life- search for a quest
+                      Get rewarded to expereiencing life- search for a Quest
                       near you!
                     </CardText>
                   </CardBody>

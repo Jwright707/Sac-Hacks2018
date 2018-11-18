@@ -9,13 +9,14 @@ import Header from "./header";
 // import Navbar from "./navbar";
 import Breadcrumbs from "./breadcrumbs";
 import Dashboard from "./Dashboard";
+import CarRequest from './authFlow';
+
 
 class App extends Component {
   render() {
     const App = () => (
       <div>
-        {/* <Navbar /> */}
-
+        <CarRequest />
         <Header />
         <Breadcrumbs />
         <div className="centerPage">
@@ -23,7 +24,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/list" component={List} />
             <Route path="/list2" component={List2} />
-            <Route path="/callback" component={Dashboard} />
+            <Route path="/dashboard" component={Dashboard} />
           </Switch>
         </div>
       </div>
