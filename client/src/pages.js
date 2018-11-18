@@ -13,15 +13,15 @@ import {
   Col
 } from "reactstrap";
 import "./pages.css";
+import CarRequest from './authFlow';
 
 class Home extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className="sub-header"> Sign up Now</h1>
-        <a className="startQuest" href="/car">
-          Click Here!
-        </a>
+        <h1 className="sub-header">
+          <CarRequest />
+        </h1>
         <Breadcrumb>
           <Row>
             <div style={{ display: "flex", justifyContent: "right" }}>

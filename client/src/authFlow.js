@@ -67,7 +67,7 @@ class CarRequest extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="startQuest">
         <button onClick={this.handleCar}>
           {this.state.url === null ? "Start Quest" : "Log Out"}
         </button>

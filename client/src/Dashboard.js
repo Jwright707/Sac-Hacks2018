@@ -1,3 +1,70 @@
+<<<<<<< HEAD
+import React, { Component } from "react";
+
+
+class Dashboard extends React.Component {
+
+
+  //Call API with  Script Given to Send Script
+  componentDidMount = async (event) => {
+    const settings = {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'Mode': 'no-cors'
+      },
+    };
+    const response = await fetch("https://polar-mesa-35819.herokuapp.com/request", settings)
+    const json = await response
+    console.log(json);
+  }
+
+  render() {
+    return <div>Dash</div>;
+    return (
+      <div>
+        Dash
+        </div>
+
+    );
+  }
+}
+export default Dashboard;
+||||||| merged common ancestors
+import React, { Component } from "react";
+
+
+class Dashboard extends React.Component {
+
+
+  //Call API with  Script Given to Send Script
+  componentDidMount = async (event) => {
+    const settings = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'Mode': 'no-cors'
+      },
+    };
+    const response = await fetch("https://polar-mesa-35819.herokuapp.com/request", settings)
+    const json = await response
+    console.log(json);
+  }
+
+  render() {
+    return <div>Dash</div>;
+    return (
+      <div>
+        Dash
+        </div>
+
+    );
+  }
+}
+export default Dashboard;
+=======
 // import React, { Component } from "react";
 // import Cookies from "universal-cookie";
 
@@ -60,3 +127,4 @@
 //   }
 // }
 // export default Dashboard;
+>>>>>>> 7b5f08897902f6788c8edef430864bd22d7c28a7
