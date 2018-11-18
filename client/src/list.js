@@ -55,36 +55,35 @@ class List extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: []
+      list: [],
+      formFields: { name: "" }
     };
   }
 
-
-
   initAutocomplete = () => {
     const google = window.google;
-    console.log(this.refs['pac-input']);
-    var map = new google.maps.Map(this.refs['google-map'], {
-      center: {lat: -33.8688, lng: 151.2195},
+    console.log(this.refs["pac-input"]);
+    var map = new google.maps.Map(this.refs["google-map"], {
+      center: { lat: -33.8688, lng: 151.2195 },
       zoom: 13,
-      mapTypeId: 'roadmap'
+      mapTypeId: "roadmap"
     });
 
     // Create the search box and link it to the UI element.
-    var input = this.refs['pac-input'];
+    var input = this.refs["pac-input"];
     var searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
     console.log(searchBox);
     // Bias the SearchBox results towards current map's viewport.
-    map.addListener('bounds_changed', function() {
+    map.addListener("bounds_changed", function() {
       searchBox.setBounds(map.getBounds());
     });
 
     var markers = [];
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
-    searchBox.addListener('places_changed', function() {
+    searchBox.addListener("places_changed", function() {
       var places = searchBox.getPlaces();
 
       if (places.length == 0) {
@@ -113,12 +112,14 @@ class List extends Component {
         };
 
         // Create a marker for each place.
-        markers.push(new google.maps.Marker({
-          map: map,
-          icon: icon,
-          title: place.name,
-          position: place.geometry.location
-        }));
+        markers.push(
+          new google.maps.Marker({
+            map: map,
+            icon: icon,
+            title: place.name,
+            position: place.geometry.location
+          })
+        );
 
         if (place.geometry.viewport) {
           // Only geocodes have viewport.
@@ -129,33 +130,40 @@ class List extends Component {
       });
       map.fitBounds(bounds);
     });
-  }
+  };
 
   // Fetch the list on first mount
   componentDidMount() {
     // this.getList();
     // this.initAutocomplete();
-  };
+  }
 
   // Retrieves the list of items from the Express app
   // getList = () => {
   //   console.log("function to send to back end");
   // };
 
-  formSubmit = (e) => {
-    
+  inputChangeHandler(e) {
+    let formFields = { ...this.state.formFields };
+    formFields[e.target.name] = e.target.value;
+    this.state.formFields = formFields;
+  }
+
+  formSubmit = formFields => {
+    console.log(this.state.formFields);
     axios({
-      method: 'post',
-      url: 'http://localhost:5000/api/quests',
+      method: "post",
+      url: "http://localhost:5000/api/quests",
       params: {
-        address: '124 first street woodland ca',
-        body: 'hello'
+        ...this.state.formFields
       }
-    }).then(response => {
-      console.log(response);
-    }).catch(error => {
-      console.log(error);
-    });
+    })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   render() {
@@ -186,6 +194,8 @@ class List extends Component {
                     name="questName"
                     id="questName"
                     placeholder="Quest Name"
+                    onChange={e => this.inputChangeHandler.call(this, e)}
+                    value={this.state.formFields.questName}
                   />
                 </FormGroup>
               </Col>
@@ -198,6 +208,8 @@ class List extends Component {
                       name="questAddress"
                       id="questAddress"
                       placeholder="Address"
+                      onChange={e => this.inputChangeHandler.call(this, e)}
+                      value={this.state.formFields.questAddress}
                     />
                   </FormGroup>
                   {/* <FormGroup id="map-container">
@@ -214,6 +226,8 @@ class List extends Component {
                       name="rewards"
                       id="rewards"
                       placeholder="Reward's Title"
+                      onChange={e => this.inputChangeHandler.call(this, e)}
+                      value={this.state.formFields.rewards}
                     />
                   </FormGroup>
                 </Col>
@@ -227,6 +241,8 @@ class List extends Component {
                       name="city"
                       id="city"
                       placeholder="City"
+                      onChange={e => this.inputChangeHandler.call(this, e)}
+                      value={this.state.formFields.city}
                     />
                   </FormGroup>
                 </Col>
@@ -238,6 +254,8 @@ class List extends Component {
                       name="zipCode"
                       id="zipCode"
                       placeholder="Zip Code"
+                      onChange={e => this.inputChangeHandler.call(this, e)}
+                      value={this.state.formFields.zipCode}
                     />
                   </FormGroup>
                 </Col>
@@ -249,6 +267,8 @@ class List extends Component {
                       name="state"
                       id="state"
                       placeholder="State"
+                      onChange={e => this.inputChangeHandler.call(this, e)}
+                      value={this.state.formFields.state}
                     />
                   </FormGroup>
                 </Col>
@@ -260,6 +280,8 @@ class List extends Component {
                       name="country"
                       id="country"
                       placeholder="Country"
+                      onChange={e => this.inputChangeHandler.call(this, e)}
+                      value={this.state.formFields.country}
                     />
                   </FormGroup>
                 </Col>
@@ -271,6 +293,8 @@ class List extends Component {
                       name="rewardValue"
                       id="rewardValue"
                       placeholder="Reward Value"
+                      onChange={e => this.inputChangeHandler.call(this, e)}
+                      value={this.state.formFields.rewardValue}
                     />
                   </FormGroup>
                 </Col>
@@ -282,6 +306,8 @@ class List extends Component {
                       name="rewardQuantity"
                       id="rewardQuantity"
                       placeholder="Reward Quantity"
+                      onChange={e => this.inputChangeHandler.call(this, e)}
+                      value={this.state.formFields.rewardQuantity}
                     />
                   </FormGroup>
                 </Col>
@@ -293,9 +319,13 @@ class List extends Component {
                   name="description"
                   id="description"
                   placeholder="Description"
+                  onChange={e => this.inputChangeHandler.call(this, e)}
+                  value={this.state.formFields.description}
                 />
               </FormGroup>
-              <Button href="#" onClick={this.formSubmit} color="primary">Submit</Button>
+              <Button href="#" onClick={this.formSubmit} color="primary">
+                Submit
+              </Button>
             </Form>
           </ListGroup>
         )}
@@ -303,6 +333,5 @@ class List extends Component {
     );
   }
 }
-
 
 export default List;

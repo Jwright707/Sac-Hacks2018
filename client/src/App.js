@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import "./App.css";
 import Home from "./pages";
 import List from "./list";
@@ -16,7 +15,6 @@ class App extends Component {
   render() {
     const App = () => (
       <div>
-        <CarRequest />
         <Header />
         <Breadcrumbs />
         <div className="centerPage">

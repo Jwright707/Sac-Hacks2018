@@ -13,15 +13,15 @@ import {
   Col
 } from "reactstrap";
 import "./pages.css";
-import CarRequest from './authFlow';
 
 class Home extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className="sub-header">
-          <CarRequest />
-        </h1>
+        <h1> Sign up Now</h1>
+        <a className="startQuest" href="/car">
+          Click Here!
+        </a>
         <Breadcrumb>
           <Row>
             <div style={{ display: "flex", justifyContent: "right" }}>
@@ -44,7 +44,7 @@ class Home extends Component {
                   </CardBody>
                   <Link to={"./list"}>
                     <BreadcrumbItem>
-                      <Button color="primary" size="lg">
+                      <Button color="primary" size="lg" className="Button">
                         Create
                       </Button>
                     </BreadcrumbItem>
@@ -66,13 +66,13 @@ class Home extends Component {
                     </CardTitle>
                     <CardSubtitle />
                     <CardText>
-                      Get rewarded to expereiencing life- search for a Quest
+                      Get rewarded to expereiencing life- search for a quest
                       near you!
                     </CardText>
                   </CardBody>
                   <Link to={"./list2"}>
                     <BreadcrumbItem>
-                      <Button color="primary" size="lg">
+                      <Button color="primary" size="lg" className="Button">
                         Explore
                       </Button>
                     </BreadcrumbItem>
