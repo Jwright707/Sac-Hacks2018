@@ -15,4 +15,6 @@ router.get('/:id', QuestController.getQuest);
 
 router.delete('/:id');
 
+router.get('/consumeToken', QuestController.consumeToken);
+
 module.exports = router;
