@@ -211,7 +211,8 @@ app.post('/request', function (req, res, next) {
     const { vehicleId, requestType: type } = req.body;
     const vehicle = vehicles[vehicleId];
     const instance = new smartcar.Vehicle(vehicleId, access.accessToken);
-    res.send(JSON(instance));
+
+
     let data = null;
 
     switch (type) {
@@ -226,7 +227,7 @@ app.post('/request', function (req, res, next) {
             break;
         case 'location':
             instance.location()
-                .then((data) => res.render('data', { data, type, vehicle }))
+                .then((data) => res.json([data, type, vehicle]))
                 .catch(function (err) {
                     const message = err.message || 'Failed to get vehicle location.';
                     const action = 'fetching vehicle location';
