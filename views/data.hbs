@@ -1,7 +1,7 @@
 <div id="vehicles">
   <h3>Step 3: Retrieve data</h3>
   <p>
-    Success! You successfully sent a {{type}} request to the {{vehicle.year}} {{vehicle.make}} {{vehicle.model}}.
+    {{type}} request to the {{vehicle.year}} {{vehicle.make}} {{vehicle.model}}.
   </p>
   <table class="table">
     <thead>
@@ -12,16 +12,13 @@
     </thead>
     <tbody>
       {{#each data}}
-        <tr>
-          <td>{{@key}}</td>
-          <td>{{this}}</td>
-        </tr>
+      <tr>
+        <td>{{@key}}</td>
+        <td>{{this}}</td>
+      </tr>
       {{/each}}
     </tbody>
   </table>
-
-  <div>
-    <a href="/vehicles" class="btn btn-primary" role="button">Make another request</a>
-    <a href="/logout" class="btn btn-link" role="button">Logout</a>
-  </div>
+  {{!-- <a href="/vehicles" class="btn btn-primary" role="button">Make another request</a>
+  <a href="/logout" class="btn btn-link" role="button">Logout</a> --}}
 </div>

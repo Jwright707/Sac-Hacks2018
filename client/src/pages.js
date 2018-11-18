@@ -7,8 +7,9 @@ class Home extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Api Request</h1>
-        {/* Link to List.js */}
+
+        <a href="/car">Start Quest</a>
+
         <Breadcrumb>
           <Link to={"./list"}>
             <BreadcrumbItem>
@@ -26,7 +27,7 @@ class Home extends Component {
             </BreadcrumbItem>
           </Link>
         </Breadcrumb>
-      </div>
+      </div >
     );
   }
 }
