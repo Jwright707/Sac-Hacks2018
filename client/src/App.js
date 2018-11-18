@@ -8,8 +8,8 @@ import List2 from "./list2";
 import Header from "./header";
 // import Navbar from "./navbar";
 import Breadcrumbs from "./breadcrumbs";
-import Dashboard from "./Dashboard";
 import CarRequest from './authFlow';
+import Tap from './info';
 
 
 class App extends Component {
@@ -24,7 +24,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/list" component={List} />
             <Route path="/list2" component={List2} />
-            <Route path="/request" component={Dashboard} />
+            <Route path="/request" component={Tap} />
           </Switch>
         </div>
       </div>

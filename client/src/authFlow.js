@@ -7,18 +7,6 @@ import smartcar from 'smartcar';
 class CarRequest extends React.Component {
   constructor() {
     super()
-    // const smartcar = new Smartcar({
-    //   clientId: '<your-client-id>',
-    //   redirectUri: 'localhost:5000',
-    //   scope: ['read_vehicle_info', 'read_odometer'],
-    //   onComplete: function (err, code) {
-    //     if (err) {
-    //       // handle errors from the authorization flow (i.e. user denies access)
-    //     }
-    //     // handle the returned code by sending it to your back-end server
-    //     sendToBackend(code);
-    //   },
-    // });
 
     this.data = {}
   }
@@ -30,9 +18,7 @@ class CarRequest extends React.Component {
 
   handleCar = async () => {
 
-    //Sends Script To API and get Id
-
-
+    //Sends Script To API and get 
     // Performing a GET request
     const response = await axios.get('https://polar-mesa-35819.herokuapp.com/car', {
       headers: {
@@ -48,24 +34,7 @@ class CarRequest extends React.Component {
     })
 
     window.location.href = this.state.url;
-  } //   const testURL = 'https://polar-mesa-35819.herokuapp.com/car';
-  //   const myInit = {
-  //     method: 'HEAD',
-  //     mode: 'no-cors',
-  //   };
-
-  //   const myRequest = new Request(testURL, myInit);
-
-  //   fetch(myRequest).then(function (response) {
-  //     return console.log(response)
-  //   }).then(function (response) {
-  //     console.log(response);
-  //   }).catch(function (e) {
-  //     console.log(e);
-  //   });
-
-  // }
-
+  }
 
 
   render() {
