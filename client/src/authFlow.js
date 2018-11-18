@@ -34,9 +34,9 @@ class CarRequest extends React.Component {
 
 
     // Performing a GET request
-    const response = await axios.get('https://cors-anywhere.herokuapp.com/https://polar-mesa-35819.herokuapp.com/car', {
+    const response = await axios.get('https://polar-mesa-35819.herokuapp.com/car', {
       headers: {
-        "Access-Control-Allow-Origin": "*" //the token is a variable which holds the token
+        "Access-Control-Allow-Origin": "https://polar-mesa-35819.herokuapp.com" //the token is a variable which holds the token
       }
     });
     const json = await response
