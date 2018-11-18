@@ -58,7 +58,6 @@ class Dashboard extends React.Component {
       return console.log('this is not logged in ');
 
     }
-    <div> console</div>
 
   }
 };
