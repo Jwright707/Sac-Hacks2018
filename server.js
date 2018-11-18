@@ -16,6 +16,9 @@ const validator = require('validator');
 const smartcar = require('smartcar');
 const mongoose = require('mongoose');
 
+const port = process.env.PORT || 5000;
+
+
 const questRoutes = require('./server/routes/quests');
 
 const app = express();
@@ -103,6 +106,7 @@ app.set('view engine', '.hbs');
  */
 app.get('/car', function (req, res, next) {
 
+
     res.json([{
         authUrl: client.getAuthUrl(),
         testMode: SMARTCAR_MODE === 'test',
@@ -167,12 +171,11 @@ app.get('/callback', function (req, res, next) {
             req.session = {};
             req.session.vehicles = {};
             req.session.access = access;
-            //pass back to front end for user login 
-            res.send(access);
-            res.cookie('id', user.id, { signed: true, httpOnly: true });
+            //pass back to front end for user login
+            // res.send(access);;
             // console.log(access)
             // console.log(user.id);
-            return res.redirect('localhost:3000/dashboard');
+            return res.redirect('/vehicles');
         })
         .catch(function (err) {
             const message = err.message || `Failed to exchange authorization code for access token`;
@@ -278,7 +281,8 @@ app.post('/request', function (req, res, next) {
 
 });
 
-app.post('/dashboard', function (req, res, next) {
+
+app.get('/dashboard', function (req, res, next) {
     const { access, vehicles } = req.session;
     // res.send(JSON(access));
     if (!access) {
@@ -327,7 +331,6 @@ app.get('*', (req, res) => {
 
 
 
-const port = process.env.PORT || 5000;
 app.listen(port);
 
 console.log('App is listening on port ' + port);

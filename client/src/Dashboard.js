@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import React, { Component } from "react";
 // import Cookies from "universal-cookie";
 
@@ -12,7 +13,7 @@
 
 //     const funct = async (event) => {
 
-//       // //will return with ID, With Settings For Post Request 
+//       // //will return with ID, With Settings For Post Request
 //       // const settings = {
 //       //   method: 'POST',
 //       //   headers: {
