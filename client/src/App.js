@@ -8,6 +8,7 @@ import List2 from "./list2";
 import Header from "./header";
 // import Navbar from "./navbar";
 import Breadcrumbs from "./breadcrumbs";
+import Dashboard from "./Dashboard";
 
 class App extends Component {
   render() {
@@ -22,7 +23,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/list" component={List} />
             <Route path="/list2" component={List2} />
-            <Route path="/auth" component={dashboard} />
+            <Route path="/auth" component={Dashboard} />
           </Switch>
         </div>
       </div>
