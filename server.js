@@ -37,15 +37,7 @@ app.use('/api/quests/', questRoutes);
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('X-Content-Type-Options: nosniff');
-    res.setHeader(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, X-Content-Type-Options: nosniff, Accept, Authorization'
-    );
-    res.setHeader(
-        'Access-Control-Allow-Methods',
-        'GET, POST, PATCH, PUT, DELETE, OPTIONS'
-    );
+
     next();
 });
 
