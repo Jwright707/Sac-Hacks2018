@@ -26,21 +26,23 @@ class List extends Component {
     };
   }
 
+
+
   initAutocomplete = () => {
     const google = window.google;
-    console.log(this.refs['google-map']);
+    console.log(this.refs['pac-input']);
     var map = new google.maps.Map(this.refs['google-map'], {
       center: {lat: -33.8688, lng: 151.2195},
       zoom: 13,
       mapTypeId: 'roadmap'
     });
-    console.log(map);
 
     // Create the search box and link it to the UI element.
-    var input = this.refs['pack-input'];
+    var input = this.refs['pac-input'];
     var searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
+    console.log(searchBox);
     // Bias the SearchBox results towards current map's viewport.
     map.addListener('bounds_changed', function() {
       searchBox.setBounds(map.getBounds());
@@ -99,8 +101,8 @@ class List extends Component {
   // Fetch the list on first mount
   componentDidMount() {
     this.getList();
-    this.initAutocomplete();
-  }
+    // this.initAutocomplete();
+  };
 
   // Retrieves the list of items from the Express app
   getList = () => {
@@ -138,6 +140,11 @@ class List extends Component {
                       placeholder="Quest Name"
                     />
                   </FormGroup>
+                  {/* <FormGroup id="map-container">
+                    <Label for="map">Location</Label>
+                    <Input id="pac-input" ref="pac-input" className="controls" type="text" placeholder="Search Box"/>
+                    <div id="map" ref="google-map"></div>
+                  </FormGroup> */}
                 </Col>
                 <Col md={6}>
                   <FormGroup>
