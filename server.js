@@ -159,6 +159,7 @@ app.get('/vehicles', function (req, res, next) {
                 req.session.vehicles[vehicleId] = {
                     id: vehicleId,
                 };
+
                 return vehicle.info();
             });
 
@@ -208,12 +209,15 @@ app.post('/request', function (req, res, next) {
             break;
         case 'location':
             instance.location()
-                .then(({ data }) => res.render('data', { data, type, vehicle }))
-                .catch(function (err) {
-                    const message = err.message || 'Failed to get vehicle location.';
-                    const action = 'fetching vehicle location';
-                    return redirectToError(res, message, action);
-                });
+                .then(({ data }) => {
+                    // res.send('data', { data, type, vehicle }))
+                    res.JSON({ data, type, vehicle });
+                })
+            // .catch(function (err) {
+            //     const message = err.message || 'Failed to get vehicle location.';
+            //     const action = 'fetching vehicle location';
+            //     return redirectToError(res, message, action);
+            // })
             break;
         case 'odometer':
             instance.odometer()

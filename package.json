@@ -21,7 +21,8 @@
     "request": "^2.88.0",
     "smartcar": "^4.1.0",
     "url": "^0.11.0",
-    "validator": "^10.6.0"
+    "validator": "^10.6.0",
+    "proxy": "http://localhost:5000"
   },
   "devDependencies": {
     "concurrently": "^3.6.1"

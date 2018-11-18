@@ -4,7 +4,7 @@ import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 const Breadcrumbs = props => {
   return (
     <div>
-      <Breadcrumb tag="nav">
+      <Breadcrumb>
         <BreadcrumbItem tag="a" href="/  ">
           Home
         </BreadcrumbItem>
