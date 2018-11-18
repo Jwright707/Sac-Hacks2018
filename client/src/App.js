@@ -14,13 +14,16 @@ class App extends Component {
     const App = () => (
       <div>
         {/* <Navbar /> */}
+
         <Header />
         <Breadcrumbs />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/list" component={List} />
-          <Route path="/list2" component={List2} />
-        </Switch>
+        <div className="centerPage">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/list" component={List} />
+            <Route path="/list2" component={List2} />
+          </Switch>
+        </div>
       </div>
     );
     return (
