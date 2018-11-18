@@ -100,10 +100,10 @@ app.set('view engine', '.hbs');
  */
 app.get('/car', function (req, res, next) {
 
-    res.render('home', {
+    res.json([{
         authUrl: client.getAuthUrl(),
         testMode: SMARTCAR_MODE === 'test',
-    });
+    }]);
 
 });
 
