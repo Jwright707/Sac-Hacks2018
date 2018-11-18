@@ -9,7 +9,8 @@ import Cookies from 'universal-cookie';
 class Dashboard extends React.Component {
   // Initialize the state
 
-  componentDidMount() {
+  DidMount = () => {
+
     const funct = async (event) => {
 
       // //will return with ID, With Settings For Post Request 
@@ -25,14 +26,14 @@ class Dashboard extends React.Component {
       // };
 
       //Sends Script To API and get Id
-      const response = await fetch('/callback')
+      const response = await fetch('https://polar-mesa-35819.herokuapp.com/callback/')
       const json = await response.json()
       console.log(json);
 
       return alert('Must Have Valid Input')
     }
 
-    funct()
+
 
   }
 
@@ -56,7 +57,7 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div>
+      <div onClick={this.DidMount}>
         Dash
         </div>
 
