@@ -8,7 +8,7 @@ class Header extends Component {
       <div className="App">
         <h1 className="App-Header">Trip Quest</h1>
         <hr className="LineBreak" />
-        <p id="CopyRight"> &copy; 2018 Website.com All Rights Reserved </p>
+        <p id="CopyRight"> &copy; Trip Quest 2018 All Rights Reserved </p>
       </div>
     );
   }
