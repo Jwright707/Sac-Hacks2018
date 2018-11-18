@@ -23,8 +23,13 @@ const questRoutes = require('./server/routes/quests');
 
 const app = express();
 
+// app.use('*', (req, res, next) => {
+//     console.log(req);
+//     next()
+// })
+
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'localhost:5000');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
         'Access-Control-Allow-Headers',
         'Origin, X-Requested-With, Content-Type, Accept, Authorization'
@@ -36,6 +41,9 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true
@@ -50,10 +58,6 @@ mongoose.connect(process.env.MONGO_URL, {
 mongoose.set('useCreateIndex', true);
 
 app.use('/api/quests/', questRoutes);
-
-
-
-
 
 
 const SMARTCAR_CLIENT_ID = envvar.string('SMARTCAR_CLIENT_ID');
@@ -90,10 +94,6 @@ const client = new smartcar.AuthClient({
 app.use(session({
     name: 'demo-session',
     secret: 'super-duper-secret',
-}));
-
-app.use(bodyParser.urlencoded({
-    extended: false
 }));
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
@@ -171,7 +171,7 @@ app.get('/callback', function (req, res, next) {
             req.session = {};
             req.session.vehicles = {};
             req.session.access = access;
-            //pass back to front end for user login 
+            //pass back to front end for user login
             // res.send(access);;
             // console.log(access)
             // console.log(user.id);
@@ -318,3 +318,18 @@ app.get('*', (req, res) => {
 app.listen(port);
 
 console.log('App is listening on port ' + port);
+
+
+
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    );
+    res.setHeader(
+        'Access-Control-Allow-Methods',
+        'GET, POST, PATCH, PUT, DELETE, OPTIONS'
+    );
+    next();
+});
