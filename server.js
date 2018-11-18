@@ -15,14 +15,16 @@ const PORT = process.env.PORT || 5000;
 const validator = require('validator');
 const smartcar = require('smartcar');
 const mongoose = require('mongoose');
-var localStorage = require('localStorage')
+
+const port = process.env.PORT || 5000;
+
 
 const questRoutes = require('./server/routes/quests');
 
 const app = express();
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'localhost:5000');
     res.setHeader(
         'Access-Control-Allow-Headers',
         'Origin, X-Requested-With, Content-Type, Accept, Authorization'
@@ -170,7 +172,7 @@ app.get('/callback', function (req, res, next) {
             req.session.vehicles = {};
             req.session.access = access;
             //pass back to front end for user login 
-            res.send(access);;
+            // res.send(access);;
             // console.log(access)
             // console.log(user.id);
             return res.redirect('/vehicles');
@@ -329,7 +331,6 @@ app.get('*', (req, res) => {
 
 
 
-const port = process.env.PORT || 5000;
 app.listen(port);
 
 console.log('App is listening on port ' + port);
