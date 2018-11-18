@@ -14,6 +14,7 @@ require('dotenv').config();
 const PORT = process.env.PORT || 5000;
 const validator = require('validator');
 const smartcar = require('smartcar');
+const mongoose = require('mongoose');
 
 const questRoutes = require('./server/routes/quests');
 
