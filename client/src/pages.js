@@ -14,13 +14,11 @@ import {
 } from "reactstrap";
 // import "./pages.css";
 
-class Home extends Component {
+class Home extends React.Component {
+
   render() {
     return (
       <div className="App">
-
-        <a href="/car">Start Quest</a>
-
         <Breadcrumb>
           <Row>
             <div style={{ display: "flex", justifyContent: "right" }}>
