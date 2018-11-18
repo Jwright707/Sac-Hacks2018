@@ -10,10 +10,10 @@ exports.createQuest = (req, res, next) => {
     console.log(req.query.address);
     rewardName = req.query.rewardValue;
     tokens = [];
-    for(int i = 0; i < req.query.rewardQuantity; i++) {
+    for(var i = 0; i < req.query.rewardQuantity; i++) {
       tokens.push({
         name: rewardName,
-        image: 'aslbkjaslrhhoewjrelwajeroajera',
+        image: 'asvar aslrhhoewjrelwajeroajera',
         default: true
       })
     }
@@ -21,6 +21,7 @@ exports.createQuest = (req, res, next) => {
     gMapClient.geocode({address: addrString})
     .asPromise()
     .then(response => {
+      console.log(response.json);
         console.log(response.json.results[0].geometry.location);
         location = response.json.results[0].geometry.location
         detail = 16
@@ -32,13 +33,12 @@ exports.createQuest = (req, res, next) => {
           tokens: tokens,
           description: req.query.description,
           checkins: [{
-                name: addrString,
-                description: rewardName,
-                hint: 'Use google maps',
-                image: 'oqiwernlxcjvoeworqjlqwkjeroxijfd',
-                quadkeys: [key]
-            }]
-          },
+              name: addrString,
+              description: rewardName,
+              hint: 'Use google maps',
+              image: 'oqiwernlxcjvoeworqjlqwkjeroxijfd',
+              quadkeys: [key]
+          }],
           hash: 'Q'
         });
         return quest.save();
