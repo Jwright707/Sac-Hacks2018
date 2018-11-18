@@ -17,6 +17,21 @@ const smartcar = require('smartcar');
 
 const app = express();
 
+// app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader('X-Content-Type-Options: nosniff');
+//     res.setHeader(
+//         'Access-Control-Allow-Headers',
+//         'Origin, X-Requested-With, X-Content-Type-Options: nosniff, Accept, Authorization'
+//     );
+//     res.setHeader(
+//         'Access-Control-Allow-Methods',
+//         'GET, POST, PATCH, PUT, DELETE, OPTIONS'
+//     );
+//     next();
+// });
+
+
 const SMARTCAR_CLIENT_ID = envvar.string('SMARTCAR_CLIENT_ID');
 const SMARTCAR_SECRET = envvar.string('SMARTCAR_SECRET');
 
@@ -31,7 +46,7 @@ if (!validator.isUUID(SMARTCAR_SECRET)) {
 
 // Redirect uri must be added to the application's allowed redirect uris
 // in the Smartcar developer portal
-const SMARTCAR_REDIRECT_URI = envvar.string('SMARTCAR_REDIRECT_URI', `http://localhost:${PORT}/callback`);
+const SMARTCAR_REDIRECT_URI = envvar.string('SMARTCAR_REDIRECT_URI', `/callback`);
 
 // Setting MODE to "test" will run the Smartcar auth flow in test mode
 const SMARTCAR_MODE = envvar.oneOf('SMARTCAR_MODE', ['test', 'live'], 'test');
@@ -65,7 +80,7 @@ app.set('view engine', '.hbs');
 /**
  * Render home page with a "Connect your car" button.
  */
-app.get('/', function (req, res, next) {
+app.get('/car', function (req, res, next) {
 
     res.render('home', {
         authUrl: client.getAuthUrl(),
@@ -131,6 +146,7 @@ app.get('/callback', function (req, res, next) {
             req.session = {};
             req.session.vehicles = {};
             req.session.access = access;
+            //pass back to front end for user login 
             return res.redirect('/vehicles');
         })
         .catch(function (err) {
@@ -159,6 +175,7 @@ app.get('/vehicles', function (req, res, next) {
                 req.session.vehicles[vehicleId] = {
                     id: vehicleId,
                 };
+
                 return vehicle.info();
             });
 
@@ -186,6 +203,7 @@ app.get('/vehicles', function (req, res, next) {
  */
 app.post('/request', function (req, res, next) {
     const { access, vehicles } = req.session;
+    // res.send(JSON(access));
     if (!access) {
         return res.redirect('/');
     }
@@ -193,7 +211,7 @@ app.post('/request', function (req, res, next) {
     const { vehicleId, requestType: type } = req.body;
     const vehicle = vehicles[vehicleId];
     const instance = new smartcar.Vehicle(vehicleId, access.accessToken);
-
+    res.send(JSON(instance));
     let data = null;
 
     switch (type) {
@@ -208,7 +226,7 @@ app.post('/request', function (req, res, next) {
             break;
         case 'location':
             instance.location()
-                .then(({ data }) => res.render('data', { data, type, vehicle }))
+                .then((data) => res.render('data', { data, type, vehicle }))
                 .catch(function (err) {
                     const message = err.message || 'Failed to get vehicle location.';
                     const action = 'fetching vehicle location';
@@ -269,6 +287,8 @@ app.post('/request', function (req, res, next) {
     }
 
 });
+
+
 
 
 

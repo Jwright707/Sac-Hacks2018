@@ -18,7 +18,9 @@ class Home extends Component {
   render() {
     return (
       <div className="App">
-        {/* Link to List.js */}
+
+        <a href="/car">Start Quest</a>
+
         <Breadcrumb>
           <Row>
             <div style={{ display: "flex", justifyContent: "right" }}>
@@ -77,7 +79,7 @@ class Home extends Component {
             </div>
           </Row>
         </Breadcrumb>
-      </div>
+      </div >
     );
   }
 }
