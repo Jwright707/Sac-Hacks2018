@@ -15,11 +15,11 @@ const PORT = process.env.PORT || 5000;
 const validator = require('validator');
 const smartcar = require('smartcar');
 const mongoose = require('mongoose');
+var localStorage = require('localStorage')
 
 const questRoutes = require('./server/routes/quests');
 
 const app = express();
-
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -170,10 +170,10 @@ app.get('/callback', function (req, res, next) {
             req.session.vehicles = {};
             req.session.access = access;
             //pass back to front end for user login 
-            // res.send(access);;
+            res.send(access);;
             // console.log(access)
             // console.log(user.id);
-            res.redirect('/vehicles');
+            return res.redirect('/vehicles');
         })
         .catch(function (err) {
             const message = err.message || `Failed to exchange authorization code for access token`;
