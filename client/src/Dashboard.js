@@ -1,9 +1,4 @@
 import React, { Component } from "react";
-import Cookies from 'universal-cookie';
-
-
-
-
 
 
 class Dashboard extends React.Component {
@@ -25,13 +20,13 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    return <div>Dash</div>;
     return (
       <div>
         Dash
         </div>
 
     );
-
   }
 }
 export default Dashboard;

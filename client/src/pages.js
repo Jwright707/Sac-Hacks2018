@@ -12,18 +12,21 @@ import {
   Row,
   Col
 } from "reactstrap";
-// import "./pages.css";
+import "./pages.css";
 
-class Home extends React.Component {
-
+class Home extends Component {
   render() {
     return (
       <div className="App">
+        <h1 className="sub-header"> Sign up Now</h1>
+        <a className="startQuest" href="/car">
+          Click Here!
+        </a>
         <Breadcrumb>
           <Row>
             <div style={{ display: "flex", justifyContent: "right" }}>
               <Col xs="6">
-                <Card body className="CardBody">
+                <Card body>
                   <CardBody>
                     <CardImg
                       top
@@ -32,7 +35,7 @@ class Home extends React.Component {
                       alt="Card image cap"
                     />
 
-                    <CardTitle>Create a Quest</CardTitle>
+                    <CardTitle className="CardTitle">Create a Quest</CardTitle>
                     <CardSubtitle />
                     <CardText>
                       Get more people to attend your event today and create a
@@ -42,7 +45,7 @@ class Home extends React.Component {
                   <Link to={"./list"}>
                     <BreadcrumbItem>
                       <Button color="primary" size="lg">
-                        Create Quest
+                        Create
                       </Button>
                     </BreadcrumbItem>
                   </Link>
@@ -50,7 +53,7 @@ class Home extends React.Component {
               </Col>
 
               <Col xs="6">
-                <Card body className="CardBody">
+                <Card body>
                   <CardBody>
                     <CardImg
                       top
@@ -58,17 +61,19 @@ class Home extends React.Component {
                       src={require("./vacation.jpg")}
                       alt="Card image cap"
                     />
-                    <CardTitle>Search for a Quest</CardTitle>
+                    <CardTitle className="CardTitle">
+                      Search for a Quest
+                    </CardTitle>
                     <CardSubtitle />
                     <CardText>
-                      Get rewarded to expereiencing life- search for a quest
+                      Get rewarded to expereiencing life- search for a Quest
                       near you!
                     </CardText>
                   </CardBody>
                   <Link to={"./list2"}>
                     <BreadcrumbItem>
                       <Button color="primary" size="lg">
-                        Search Quest
+                        Explore
                       </Button>
                     </BreadcrumbItem>
                   </Link>
@@ -77,7 +82,7 @@ class Home extends React.Component {
             </div>
           </Row>
         </Breadcrumb>
-      </div >
+      </div>
     );
   }
 }

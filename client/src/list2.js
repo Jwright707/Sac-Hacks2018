@@ -6,6 +6,7 @@ import {
   ListGroupItemHeading,
   ListGroupItemText
 } from "reactstrap";
+import "./list2.css";
 
 // class List2 extends Component {
 // state = {
@@ -87,56 +88,69 @@ class List2 extends Component {
                   <ListGroupItemHeading>Quests</ListGroupItemHeading>
                 </ListGroupItem>
                 <ListGroupItem>
-                  <ListGroupItemHeading className="ListItem">
-                    Sac Hacks 2018
-                  </ListGroupItemHeading>
-                  <ListGroupItemText tags="a" href="#">
-                    Design. Code. Launch. SacHacks is the first major
-                    intercollegiate hackathon in the Sacramento, California
-                    area. Our passion is to cultivate the untapped potential of
-                    those in Sac by providing them with the opportunity to
-                    launch their ideas in a public venue. We provide the place,
-                    you bring your ideas, and we have a friendly competition
-                    between all creative coders to launch their ideas into
-                    action during a 24-hour hackathon.
-                  </ListGroupItemText>
-                  <ListGroupItemHeading>
-                    Sacramento Kings Basketball Game
-                  </ListGroupItemHeading>
-                  <ListGroupItemText>
-                    The Sacramento Kings are an American professional basketball
-                    team based in Sacramento, California. The Kings compete in
-                    the National Basketball Association (NBA) as a member of the
-                    Western Conference's Pacific Division. The Kings are the
-                    only team in the major professional North American sports
-                    leagues located in Sacramento. The team plays its home games
-                    at the Golden 1 Center.
-                  </ListGroupItemText>
-                  <ListGroupItemHeading>Burning Man</ListGroupItemHeading>
-                  <ListGroupItemText>
-                    Burning Man is an annual experiment in temporary community
-                    dedicated to radical self-expression and radical
-                    self-reliance. Our First-timers Guide is a good place to
-                    start for an understanding of our annual event in Black Rock
-                    City.
-                  </ListGroupItemText>
-                  <ListGroupItemHeading>Grand Canyon</ListGroupItemHeading>
-                  <ListGroupItemText>
-                    Grand Canyon National Park. Carved out by the Colorado
-                    River, the Grand Canyon (nearly 1,500 m deep) is the most
-                    spectacular gorge in the world. Located in the state of
-                    Arizona, it cuts across the Grand Canyon National Park.
-                  </ListGroupItemText>
-                  <ListGroupItemHeading>
-                    San Francisco Giants Baseball Game
-                  </ListGroupItemHeading>
-                  <ListGroupItemText>
-                    The San Francisco Giants are an American professional
-                    baseball team based in San Francisco, California. Founded in
-                    1883 as the New York Gothams, and renamed three years later
-                    the New York Giants, the team eventually moved to San
-                    Francisco in 1958.
-                  </ListGroupItemText>
+                  <span className="ListItem">
+                    <ListGroupItemHeading>Sac Hacks 2018</ListGroupItemHeading>
+                    <ListGroupItemText tags="a" href="">
+                      Design. Code. Launch. SacHacks is the first major
+                      intercollegiate hackathon in the Sacramento, California
+                      area. Our passion is to cultivate the untapped potential
+                      of those in Sac by providing them with the opportunity to
+                      launch their ideas in a public venue. We provide the
+                      place, you bring your ideas, and we have a friendly
+                      competition between all creative coders to launch their
+                      ideas into action during a 24-hour hackathon.
+                    </ListGroupItemText>
+                  </span>
+                  <hr />
+                  <span className="ListItem">
+                    <ListGroupItemHeading>
+                      Sacramento Kings Basketball Game
+                    </ListGroupItemHeading>
+                    <ListGroupItemText>
+                      The Sacramento Kings are an American professional
+                      basketball team based in Sacramento, California. The Kings
+                      compete in the National Basketball Association (NBA) as a
+                      member of the Western Conference's Pacific Division. The
+                      Kings are the only team in the major professional North
+                      American sports leagues located in Sacramento. The team
+                      plays its home games at the Golden 1 Center.
+                    </ListGroupItemText>
+                  </span>
+                  <hr />
+                  <span className="ListItem">
+                    <ListGroupItemHeading>Burning Man</ListGroupItemHeading>
+                    <ListGroupItemText>
+                      Burning Man is an annual experiment in temporary community
+                      dedicated to radical self-expression and radical
+                      self-reliance. Our First-timers Guide is a good place to
+                      start for an understanding of our annual event in Black
+                      Rock City.
+                    </ListGroupItemText>
+                  </span>
+                  <hr />
+                  <span className="ListItem">
+                    <ListGroupItemHeading>Grand Canyon</ListGroupItemHeading>
+                    <ListGroupItemText>
+                      Grand Canyon National Park. Carved out by the Colorado
+                      River, the Grand Canyon (nearly 1,500 m deep) is the most
+                      spectacular gorge in the world. Located in the state of
+                      Arizona, it cuts across the Grand Canyon National Park.
+                    </ListGroupItemText>
+                  </span>
+                  <hr />
+                  <span className="ListItem">
+                    <ListGroupItemHeading>
+                      San Francisco Giants Baseball Game
+                    </ListGroupItemHeading>
+                    <ListGroupItemText>
+                      The San Francisco Giants are an American professional
+                      baseball team based in San Francisco, California. Founded
+                      in 1883 as the New York Gothams, and renamed three years
+                      later the New York Giants, the team eventually moved to
+                      San Francisco in 1958.
+                    </ListGroupItemText>
+                  </span>
+                  <hr />
                 </ListGroupItem>
               </ListGroup>
             </div>
