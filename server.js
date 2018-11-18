@@ -65,7 +65,7 @@ app.set('view engine', '.hbs');
 /**
  * Render home page with a "Connect your car" button.
  */
-app.get('/', function (req, res, next) {
+app.get('/car', function (req, res, next) {
 
     res.render('home', {
         authUrl: client.getAuthUrl(),
