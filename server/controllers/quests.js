@@ -9,7 +9,7 @@ exports.createQuest = (req, res, next) => {
         res.status(201).json({
             message: 'Quest added successfully!',
             quest: {
-                ,,,createdQuest.toObject(),
+                ...createdQuest.toObject(),
                 id: createdQuest._id,
             }
         });
