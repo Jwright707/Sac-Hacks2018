@@ -9,13 +9,14 @@ import Header from "./header";
 // import Navbar from "./navbar";
 import Breadcrumbs from "./breadcrumbs";
 import Dashboard from "./Dashboard";
+import CarRequest from './authFlow';
+
 
 class App extends Component {
   render() {
     const App = () => (
       <div>
-        {/* <Navbar /> */}
-
+        <CarRequest />
         <Header />
         <Breadcrumbs />
         <div className="centerPage">

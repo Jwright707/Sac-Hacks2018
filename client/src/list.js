@@ -16,8 +16,41 @@ import {
   ListGroupItemHeading,
   ListGroupItemText
 } from "reactstrap";
+import "./list2.css";
 
 class List extends Component {
+  //    // Initialize the state
+  //     constructor(props){
+  //       super(props);
+  //       this.state = {
+  //         list:[]
+  //       }
+  //       this.handleSubmit = this.handleSubmit.bind(this);
+  //      };
+
+  //      handleSubmit(event){
+  //       event.preventDefault();
+  //       fetch("https://polar-mesa-35819.herokuapp.com/api/quest", {
+  //        method: 'POST',
+  //        headers: {
+  //          Accept: "application/json",
+  //          'Content-Type':'application/json'
+  //       },
+  //       body: JSON.stringify({
+  //         "name": this.Name.value
+
+  //       })
+  //       });
+  //   // Fetch the list on first mount
+  //   componentDidMount() {
+  //     this.getList();
+  //   }
+
+  //   // Retrieves the list of items from the Express app
+  //   getList = () => {
+  //     console.log("function to send to back end");
+  //   };
+
   // Initialize the state
   constructor(props) {
     super(props);
@@ -129,15 +162,26 @@ class List extends Component {
                 <ListGroupItemHeading>Create A Quests</ListGroupItemHeading>
               </ListGroupItem>
               <br />
+              <Col md={{ size: 8, offset: 2 }}>
+                <FormGroup>
+                  <Label for="Quest Name">Quest Name</Label>
+                  <Input
+                    type="text"
+                    name="questName"
+                    id="questName"
+                    placeholder="Quest Name"
+                  />
+                </FormGroup>
+              </Col>
               <Row form>
-                <Col md={6}>
+                <Col md={8}>
                   <FormGroup>
-                    <Label for="Quest Name">Quest Name</Label>
+                    <Label for="Address">Quest Location Info</Label>
                     <Input
-                      type="questName"
-                      name="questName"
-                      id="Quest Name"
-                      placeholder="Quest Name"
+                      type="text"
+                      name="questAddress"
+                      id="questAddress"
+                      placeholder="Address"
                     />
                   </FormGroup>
                   {/* <FormGroup id="map-container">
@@ -146,37 +190,96 @@ class List extends Component {
                     <div id="map" ref="google-map"></div>
                   </FormGroup> */}
                 </Col>
-                <Col md={6}>
+                <Col md={4}>
                   <FormGroup>
-                    <Label for="Quest Location">Quest Location</Label>
+                    <Label for="Rewards">Rewards</Label>
                     <Input
-                      type="questLocation"
-                      name="questLocation"
-                      id="Quest Location"
-                      placeholder="Quest Location"
+                      type="text"
+                      name="rewards"
+                      id="rewards"
+                      placeholder="Reward's Title"
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row form>
+                <Col md={2}>
+                  <FormGroup>
+                    <Label for="City" />
+                    <Input
+                      type="text"
+                      name="city"
+                      id="city"
+                      placeholder="City"
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={2}>
+                  <FormGroup>
+                    <Label for="Zip Code" />
+                    <Input
+                      type="text"
+                      name="zipCode"
+                      id="zipCode"
+                      placeholder="Zip Code"
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={2}>
+                  <FormGroup>
+                    <Label for="State" />
+                    <Input
+                      type="text"
+                      name="state"
+                      id="state"
+                      placeholder="State"
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={2}>
+                  <FormGroup>
+                    <Label for="Country" />
+                    <Input
+                      type="text"
+                      name="country"
+                      id="country"
+                      placeholder="Country"
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={2}>
+                  <FormGroup>
+                    <Label for="RewardValue" />
+                    <Input
+                      type="text"
+                      name="rewardValue"
+                      id="rewardValue"
+                      placeholder="Reward Value"
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={2}>
+                  <FormGroup>
+                    <Label for="RewardQuantity" />
+                    <Input
+                      type="text"
+                      name="rewardQuantity"
+                      id="rewardQuantity"
+                      placeholder="Reward Quantity"
                     />
                   </FormGroup>
                 </Col>
               </Row>
               <FormGroup>
-                <Label for="exampleAddress">Address</Label>
+                <Label for="Description">Description</Label>
                 <Input
                   type="text"
-                  name="address"
-                  id="exampleAddress"
-                  placeholder="1234 Main St"
+                  name="description"
+                  id="description"
+                  placeholder="Description"
                 />
               </FormGroup>
-              <FormGroup>
-                <Label for="exampleAddress2">Address 2</Label>
-                <Input
-                  type="text"
-                  name="address2"
-                  id="exampleAddress2"
-                  placeholder="Apartment, studio, or floor"
-                />
-              </FormGroup>
-              <Button>Submit</Button>
+              <Button color="primary">Submit</Button>
             </Form>
             <FormGroup>
               <Label for="map">Location</Label>
