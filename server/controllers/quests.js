@@ -1,19 +1,20 @@
 const Quest = require('../models/quests');
 const gMapClient = require('@google/maps').createClient({
-  key: 'AIzaSyCef93ExoNU6nfCBvZFtNIvcT4vct5mzBk',
+  key: "AIzaSyCef93ExoNU6nfCBvZFtNIvcT4vct5mzBk",
   Promise: Promise
 });
 
 exports.createQuest = (req, res, next) => {
-    return res.status(200).json({});
-    gMapClient.geocode({address: req.body.address})
-      .asPromise()
-      .then(response => {
+    console.log(req.query.address);
+    gMapClient.geocode({address: req.query.address})
+    .asPromise()
+    .then(response => {
+        console.log(response);
         const quest = new Quest({
-            ...req.body.quest,
+            ...req.params.quest,
         });
         return quest.save();
-      }).then(createdQuest => {
+    }).then(createdQuest => {
         res.status(201).json({
             message: 'Quest added successfully!',
             quest: {
@@ -23,8 +24,10 @@ exports.createQuest = (req, res, next) => {
         });
     })
     .catch(error => {
+        console.log(error);
         res.status(500).json({
-            message: 'Quest creation failed'
+            message: 'Quest creation failed',
+            error: error
         });
     });
 }
@@ -44,6 +47,7 @@ exports.updateQuest = (req, res, next) => {
         }
     })
     .catch(error => {
+        console.log(error);
         res.status(500).json({
             message: 'Couldn\'t update quest!'
         });

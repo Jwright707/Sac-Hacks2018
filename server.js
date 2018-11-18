@@ -38,6 +38,10 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true
 })
@@ -87,10 +91,6 @@ const client = new smartcar.AuthClient({
 app.use(session({
     name: 'demo-session',
     secret: 'super-duper-secret',
-}));
-
-app.use(bodyParser.urlencoded({
-    extended: false
 }));
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
