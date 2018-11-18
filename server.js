@@ -15,7 +15,24 @@ const PORT = process.env.PORT || 5000;
 const validator = require('validator');
 const smartcar = require('smartcar');
 
+const questRoutes = require('./server/routes/quests');
+
 const app = express();
+
+
+mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true
+})
+.then(() => {
+    console.log('Connnected to database!');
+})
+.catch(() => {
+    console.log('Database connection failed!');
+});
+
+mongoose.set('useCreateIndex', true);
+
+app.use('/api/quests/', questRoutes);
 
 // app.use((req, res, next) => {
 //     res.setHeader('Access-Control-Allow-Origin', '*');
