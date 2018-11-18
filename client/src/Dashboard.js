@@ -7,7 +7,7 @@ class Dashboard extends React.Component {
   //Call API with  Script Given to Send Script
   componentDidMount = async (event) => {
     const settings = {
-      method: 'POST',
+      method: 'GET',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
