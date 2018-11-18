@@ -1,66 +1,67 @@
 import React, { Component } from "react";
-import { Cookies } from 'react-cookie';
+import Cookies from 'universal-cookie';
+
+
 
 
 
 
 class Dashboard extends React.Component {
   // Initialize the state
-  constructor(props) {
-    super(props);
-    this.state = {
-      userId: undefined
-    };
-  }
 
-  // handleRequest = async (event) => {
-  //   // this.data = window.json
-  //   console.log(`data ${data}`)
-  //   if (this.script.length >= 1) {
-  //     //will return with ID, With Settings For Post Request 
-  //     const settings = {
-  //       method: 'POST',
-  //       headers: {
-  //         Accept: 'application/json',
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         "Cookie": localStorage.getItem(key),
-  //         "Type": Location
-  //       }),
-  //     };
+  componentDidMount() {
+    async (event) => {
 
-  //     //Sends Script To API and get Id
-  //     const response = await fetch(this.url, settings)
-  //     const json = await response.json()
-  //     this.setState({
-  //       script: json.script
-  //     });
+      // //will return with ID, With Settings For Post Request 
+      // const settings = {
+      //   method: 'POST',
+      //   headers: {
+      //     Accept: 'application/json',
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({
+      //     "script": this.script
+      //   }),
+      // };
 
-  //     this.scriptID = json.id
-  //     console.log(this.scriptID)
-  //   } else {
-  //     return alert('Must Have Valid Input')
-  //   }
+      //Sends Script To API and get Id
+      const response = await fetch('/callback')
+      const json = await response.json()
+      console.log(json);
 
-
-
-
-
-
-
-  onLogout = () => {
-
-  }
-
-  render() {
-    if (!this.state.userId) {
-      return console.log('this is not logged in ');
-
+      return alert('Must Have Valid Input')
     }
 
+
+
   }
-};
+
+  requireAuth = () => {
+    if (!localStorage.getItem('token')) {
+      // go to login route
+    }
+  }
+  // stay on this route since the user is authenticated
+
+  verifyAuth = () => {
+    if (localStorage.getItem('token')) {
+      // go to your dashboard or home route
+    }
+    // stay on this route since the user is not authenticated
+  }
 
 
+
+
+
+  render() {
+    return (
+      <div>
+        Dash
+        </div>
+
+    );
+
+  }
+}
 export default Dashboard;

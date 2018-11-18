@@ -24,12 +24,12 @@ const app = express();
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true
 })
-.then(() => {
-    console.log('Connnected to database!');
-})
-.catch(() => {
-    console.log('Database connection failed!');
-});
+    .then(() => {
+        console.log('Connnected to database!');
+    })
+    .catch(() => {
+        console.log('Database connection failed!');
+    });
 
 mongoose.set('useCreateIndex', true);
 
@@ -166,10 +166,10 @@ app.get('/callback', function (req, res, next) {
             req.session.access = access;
             //pass back to front end for user login 
             res.send(access);
-            // res.cookie('id', user.id, { signed: true, httpOnly: true });
+            res.cookie('id', user.id, { signed: true, httpOnly: true });
             // console.log(access)
             // console.log(user.id);
-            return res.redirect('/vehicles');
+            return res.redirect('localhost:3000/dashboard');
         })
         .catch(function (err) {
             const message = err.message || `Failed to exchange authorization code for access token`;
