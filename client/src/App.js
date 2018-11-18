@@ -23,7 +23,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/list" component={List} />
             <Route path="/list2" component={List2} />
-            <Route path="/auth" component={Dashboard} />
+            <Route path="/callback" component={Dashboard} />
           </Switch>
         </div>
       </div>

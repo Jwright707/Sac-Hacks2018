@@ -8,30 +8,58 @@ class Dashboard extends React.Component {
   // Initialize the state
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      userId: undefined
+    };
   }
 
-  // Fetch the list on first mount
-  componentWillMount() {
-    this.state = { userId: Cookies.load('userId') };
+  // handleRequest = async (event) => {
+  //   // this.data = window.json
+  //   console.log(`data ${data}`)
+  //   if (this.script.length >= 1) {
+  //     //will return with ID, With Settings For Post Request 
+  //     const settings = {
+  //       method: 'POST',
+  //       headers: {
+  //         Accept: 'application/json',
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //         "Cookie": localStorage.getItem(key),
+  //         "Type": Location
+  //       }),
+  //     };
 
-  }
+  //     //Sends Script To API and get Id
+  //     const response = await fetch(this.url, settings)
+  //     const json = await response.json()
+  //     this.setState({
+  //       script: json.script
+  //     });
 
-  onLogin(userId) {
-    this.setState({ userId });
-    Cookies.save('userId', userId, { path: '/' });
-  }
+  //     this.scriptID = json.id
+  //     console.log(this.scriptID)
+  //   } else {
+  //     return alert('Must Have Valid Input')
+  //   }
 
-  onLogout() {
-    Cookies.remove('userId', { path: '/' });
+
+
+
+
+
+
+  onLogout = () => {
+
   }
 
   render() {
     if (!this.state.userId) {
       return console.log('this is not logged in ');
-    }
 
-    return <div userId={this.state.userId} />;
+    }
+    <div> console</div>
+
   }
 };
 

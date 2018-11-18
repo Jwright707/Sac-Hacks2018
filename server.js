@@ -147,6 +147,10 @@ app.get('/callback', function (req, res, next) {
             req.session.vehicles = {};
             req.session.access = access;
             //pass back to front end for user login 
+            res.send(access);
+            // res.cookie('id', user.id, { signed: true, httpOnly: true });
+            // console.log(access)
+            // console.log(user.id);
             return res.redirect('/vehicles');
         })
         .catch(function (err) {
@@ -227,7 +231,7 @@ app.post('/request', function (req, res, next) {
             break;
         case 'location':
             instance.location()
-                .then((data) => res.json([data, type, vehicle]))
+                .then((data) => res.json([data, type, vehicle, access]))
                 .catch(function (err) {
                     const message = err.message || 'Failed to get vehicle location.';
                     const action = 'fetching vehicle location';
@@ -243,42 +247,6 @@ app.post('/request', function (req, res, next) {
                     return redirectToError(res, message, action);
                 });
             break;
-        case 'lock':
-            instance.lock()
-                .then(function () {
-                    res.render('data', {
-                        // Lock and unlock requests do not return data if successful
-                        data: {
-                            action: 'Lock request sent.',
-                        },
-                        type,
-                        vehicle,
-                    });
-                })
-                .catch(function (err) {
-                    const message = err.message || 'Failed to send lock request to vehicle.';
-                    const action = 'locking vehicle';
-                    return redirectToError(res, message, action);
-                });
-            break;
-        case 'unlock':
-            instance.unlock()
-                .then(function () {
-                    res.render('data', {
-                        vehicle,
-                        type,
-                        // Lock and unlock requests do not return data if successful
-                        data: {
-                            action: 'Unlock request sent.',
-                        },
-                    });
-                })
-                .catch(function (err) {
-                    const message = err.message || 'Failed to send unlock request to vehicle.';
-                    const action = 'unlocking vehicle';
-                    return redirectToError(res, message, action);
-                });
-            break;
         default:
             return redirectToError(
                 res,
@@ -289,9 +257,22 @@ app.post('/request', function (req, res, next) {
 
 });
 
+app.post('/dashboard', function (req, res, next) {
+    const { access, vehicles } = req.session;
+    // res.send(JSON(access));
+    if (!access) {
+        return res.redirect('/');
+    }
 
+    const { vehicleId, requestType: type } = req.body;
+    const vehicle = vehicles[vehicleId];
+    const instance = new smartcar.Vehicle(vehicleId, access.accessToken);
+    let data = null;
 
-
+    instance.location()
+        .then(data => res.json([data, type, vehicle]));
+    return console.log(data);
+});
 
 
 
