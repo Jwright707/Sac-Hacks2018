@@ -12,3 +12,11 @@
 .LineBreak {
   opacity: 0.3;
 }
+
+#CopyRight {
+  font-size: 70%;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
