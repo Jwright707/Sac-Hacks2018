@@ -10,7 +10,7 @@ class Dashboard extends React.Component {
   // Initialize the state
 
   componentDidMount() {
-    async (event) => {
+    const funct = async (event) => {
 
       // //will return with ID, With Settings For Post Request 
       // const settings = {
@@ -32,7 +32,7 @@ class Dashboard extends React.Component {
       return alert('Must Have Valid Input')
     }
 
-
+    funct()
 
   }
 
