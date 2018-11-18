@@ -20,6 +20,23 @@ const questRoutes = require('./server/routes/quests');
 
 const app = express();
 
+// app.use('*', (req, res, next) => {
+//     console.log(req);
+//     next()
+// })
+
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    );
+    res.setHeader(
+        'Access-Control-Allow-Methods',
+        'GET, POST, PATCH, PUT, DELETE, OPTIONS'
+    );
+    next();
+});
 
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true
@@ -34,12 +51,6 @@ mongoose.connect(process.env.MONGO_URL, {
 mongoose.set('useCreateIndex', true);
 
 app.use('/api/quests/', questRoutes);
-
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-
-    next();
-});
 
 
 const SMARTCAR_CLIENT_ID = envvar.string('SMARTCAR_CLIENT_ID');
@@ -320,3 +331,18 @@ const port = process.env.PORT || 5000;
 app.listen(port);
 
 console.log('App is listening on port ' + port);
+
+
+
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    );
+    res.setHeader(
+        'Access-Control-Allow-Methods',
+        'GET, POST, PATCH, PUT, DELETE, OPTIONS'
+    );
+    next();
+});

@@ -133,13 +133,24 @@ class List extends Component {
 
   // Fetch the list on first mount
   componentDidMount() {
-    this.getList();
+    // this.getList();
     // this.initAutocomplete();
   };
 
   // Retrieves the list of items from the Express app
-  getList = () => {
-    console.log("function to send to back end");
+  // getList = () => {
+  //   console.log("function to send to back end");
+  // };
+
+  formSubmit = (e) => {
+    
+    axios.post('http://localhost:5000/api/quests', {
+      quest: 'data'
+    }).then(response => {
+      console.log(response);
+    }).catch(error => {
+      console.log(error);
+    });
   };
 
   render() {
@@ -279,13 +290,8 @@ class List extends Component {
                   placeholder="Description"
                 />
               </FormGroup>
-              <Button color="primary">Submit</Button>
+              <Button href="#" onClick={this.formSubmit} color="primary">Submit</Button>
             </Form>
-            <FormGroup>
-              <Label for="map">Location</Label>
-              <Input id="pac-input" ref="pac-input" className="controls" type="text" placeholder="Search Box"/>
-              <div id="map" ref="google-map"></div>
-            </FormGroup>
           </ListGroup>
         )}
       </div>

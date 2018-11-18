@@ -1,11 +1,19 @@
 const Quest = require('../models/quests');
+const gMapClient = require('@google/maps').createClient({
+  key: 'AIzaSyCef93ExoNU6nfCBvZFtNIvcT4vct5mzBk',
+  Promise: Promise
+});
 
 exports.createQuest = (req, res, next) => {
-    // return res.status(200).json({});
-    const quest = new Quest({
-        ...req.body.quest,
-    });
-    quest.save().then(createdQuest => {
+    return res.status(200).json({});
+    gMapClient.geocode({address: req.body.address})
+      .asPromise()
+      .then(response => {
+        const quest = new Quest({
+            ...req.body.quest,
+        });
+        return quest.save();
+      }).then(createdQuest => {
         res.status(201).json({
             message: 'Quest added successfully!',
             quest: {
