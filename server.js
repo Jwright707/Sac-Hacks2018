@@ -208,71 +208,79 @@ app.post('/request', function (req, res, next) {
                 });
             break;
         case 'location':
-            instance.location()
-                .then(({ data }) => {
-                    // res.send('data', { data, type, vehicle }))
-                    res.JSON({ data, type, vehicle });
-                })
-            // .catch(function (err) {
-            //     const message = err.message || 'Failed to get vehicle location.';
-            //     const action = 'fetching vehicle location';
-            //     return redirectToError(res, message, action);
-            // })
-            break;
-        case 'odometer':
-            instance.odometer()
-                .then(({ data }) => res.render('data', { data, type, vehicle }))
-                .catch(function (err) {
-                    const message = err.message || 'Failed to get vehicle odometer.';
-                    const action = 'fetching vehicle odometer';
-                    return redirectToError(res, message, action);
-                });
-            break;
-        case 'lock':
-            instance.lock()
-                .then(function () {
-                    res.render('data', {
-                        // Lock and unlock requests do not return data if successful
-                        data: {
-                            action: 'Lock request sent.',
-                        },
-                        type,
-                        vehicle,
-                    });
-                })
-                .catch(function (err) {
-                    const message = err.message || 'Failed to send lock request to vehicle.';
-                    const action = 'locking vehicle';
-                    return redirectToError(res, message, action);
-                });
-            break;
-        case 'unlock':
-            instance.unlock()
-                .then(function () {
-                    res.render('data', {
-                        vehicle,
-                        type,
-                        // Lock and unlock requests do not return data if successful
-                        data: {
-                            action: 'Unlock request sent.',
-                        },
-                    });
-                })
-                .catch(function (err) {
-                    const message = err.message || 'Failed to send unlock request to vehicle.';
-                    const action = 'unlocking vehicle';
-                    return redirectToError(res, message, action);
-                });
-            break;
-        default:
-            return redirectToError(
-                res,
-                `Failed to find request type ${requestType}`,
-                'sending request to vehicle'
-            );
-    }
+            switch (type) {
+                case 'info':
+                    instance.info()
+                        .then(data => res.render('data', { data, type, vehicle }))
+                        .catch(function (err) {
+                            const message = err.message || 'Failed to get vehicle info.';
+                            const action = 'fetching vehicle info';
+                            return redirectToError(res, message, action);
+                        });
+                    break;
+                case 'location':
+                    instance.location()
+                        .then(({ data }) => res.render('data', { data, type, vehicle }))
+                        .catch(function (err) {
+                            const message = err.message || 'Failed to get vehicle location.';
+                            const action = 'fetching vehicle location';
+                            return redirectToError(res, message, action);
+                        });
+                    break;
+                case 'odometer':
+                    instance.odometer()
+                        .then(({ data }) => res.render('data', { data, type, vehicle }))
+                        .catch(function (err) {
+                            const message = err.message || 'Failed to get vehicle odometer.';
+                            const action = 'fetching vehicle odometer';
+                            return redirectToError(res, message, action);
+                        });
+                    break;
+                case 'lock':
+                    instance.lock()
+                        .then(function () {
+                            res.render('data', {
+                                // Lock and unlock requests do not return data if successful
+                                data: {
+                                    action: 'Lock request sent.',
+                                },
+                                type,
+                                vehicle,
+                            });
+                        })
+                        .catch(function (err) {
+                            const message = err.message || 'Failed to send lock request to vehicle.';
+                            const action = 'locking vehicle';
+                            return redirectToError(res, message, action);
+                        });
+                    break;
+                case 'unlock':
+                    instance.unlock()
+                        .then(function () {
+                            res.render('data', {
+                                vehicle,
+                                type,
+                                // Lock and unlock requests do not return data if successful
+                                data: {
+                                    action: 'Unlock request sent.',
+                                },
+                            });
+                        })
+                        .catch(function (err) {
+                            const message = err.message || 'Failed to send unlock request to vehicle.';
+                            const action = 'unlocking vehicle';
+                            return redirectToError(res, message, action);
+                        });
+                    break;
+                default:
+                    return redirectToError(
+                        res,
+                        `Failed to find request type ${requestType}`,
+                        'sending request to vehicle'
+                    );
+            }
 
-});
+    });
 
 
 
