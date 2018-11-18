@@ -131,7 +131,8 @@ app.get('/callback', function (req, res, next) {
             req.session = {};
             req.session.vehicles = {};
             req.session.access = access;
-            return res.redirect('/vehicles');
+
+            return res.redirect('/');
         })
         .catch(function (err) {
             const message = err.message || `Failed to exchange authorization code for access token`;
@@ -187,6 +188,7 @@ app.get('/vehicles', function (req, res, next) {
  */
 app.post('/request', function (req, res, next) {
     const { access, vehicles } = req.session;
+    res.send(JSON(access));
     if (!access) {
         return res.redirect('/');
     }
@@ -209,7 +211,7 @@ app.post('/request', function (req, res, next) {
             break;
         case 'location':
             instance.location()
-                .then(({ data }) => res.render('data', { data, type, vehicle }))
+                .then((data) => res.send(JSON(data)))
                 .catch(function (err) {
                     const message = err.message || 'Failed to get vehicle location.';
                     const action = 'fetching vehicle location';
