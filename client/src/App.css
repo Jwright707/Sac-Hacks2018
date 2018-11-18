@@ -13,6 +13,13 @@
   opacity: 0.3;
 }
 
+.centerPage {
+  /* height: 75vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #CopyRight {
   font-size: 70%;
   position: fixed;
