@@ -78,3 +78,38 @@ exports.getQuestList = (req, res, next) => {
         });
     });
 }
+
+exports.consumeToken = (req, res, next) => {
+    const checkInLocation = req.body.checkInLocation;
+    const questQuery = Quest.findOne({
+        _id: req.body.id,
+        'checkins.quadkeys': checkInLocation
+    });
+    let reward;
+
+    questQuery.then(quest => {
+        reward = quest.tokens.shift()
+        let questQuery;
+        if (tokens.length == 0) {
+            console.log('Would have deleted');
+            //questQuery = Quest.deleteOne({_id: quest._id});
+            questQuery = Quest.findOne({_id: quest._id});
+        } else {
+            questQuery = quest.updateOne(
+                    {_id: quest._id},
+                    {tokens: quest.tokens});
+        }
+        return questQuery;
+    })
+    .then(response => {
+        res.status(200).json({
+            message: 'Quest completed',
+            reward: reward
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'No quest complete at that location'
+        });
+    })
+}
