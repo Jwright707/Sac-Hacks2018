@@ -1,4 +1,15 @@
 import React, { Component } from "react";
+import axios from "axios";
+import {
+  Col,
+  Row,
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  FormText
+} from "reactstrap";
 
 class List extends Component {
   // Initialize the state
@@ -24,7 +35,6 @@ class List extends Component {
 
     return (
       <div className="App">
-        <h1>List of Items</h1>
         {/* Check to see if any items are found*/}
         {list.length ? (
           <div>
@@ -34,9 +44,55 @@ class List extends Component {
             })}
           </div>
         ) : (
-          <div>
-            <h2>No List Items Found</h2>
-          </div>
+          <Form>
+            <div>
+              <h1>Create a Quest</h1>
+            </div>
+            <br />
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="Quest Name">Quest Name</Label>
+                  <Input
+                    type="questName"
+                    name="questName"
+                    id="Quest Name"
+                    placeholder="Quest Name"
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="Quest Location">Quest Location</Label>
+                  <Input
+                    type="questLocation"
+                    name="questLocation"
+                    id="Quest Location"
+                    placeholder="Quest Location"
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
+            <FormGroup>
+              <Label for="exampleAddress">Address</Label>
+              <Input
+                type="text"
+                name="address"
+                id="exampleAddress"
+                placeholder="1234 Main St"
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="exampleAddress2">Address 2</Label>
+              <Input
+                type="text"
+                name="address2"
+                id="exampleAddress2"
+                placeholder="Apartment, studio, or floor"
+              />
+            </FormGroup>
+            <Button>Submit</Button>
+          </Form>
         )}
       </div>
     );
