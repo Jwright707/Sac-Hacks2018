@@ -23,10 +23,7 @@ const questRoutes = require('./server/routes/quests');
 
 const app = express();
 
-// app.use('*', (req, res, next) => {
-//     console.log(req);
-//     next()
-// })
+
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -255,7 +252,7 @@ app.post('/request', function (req, res, next) {
             break;
         case 'location':
             instance.location()
-                .then((data) => res.json([data, type, vehicle, access]))
+                .then((data) => res.render('data', { data, type, vehicle }))
                 .catch(function (err) {
                     const message = err.message || 'Failed to get vehicle location.';
                     const action = 'fetching vehicle location';
@@ -320,16 +317,3 @@ app.listen(port);
 console.log('App is listening on port ' + port);
 
 
-
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-    );
-    res.setHeader(
-        'Access-Control-Allow-Methods',
-        'GET, POST, PATCH, PUT, DELETE, OPTIONS'
-    );
-    next();
-});
