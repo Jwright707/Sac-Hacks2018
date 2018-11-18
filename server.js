@@ -17,19 +17,19 @@ const smartcar = require('smartcar');
 
 const app = express();
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('X-Content-Type-Options: nosniff');
-    res.setHeader(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, X-Content-Type-Options: nosniff, Accept, Authorization'
-    );
-    res.setHeader(
-        'Access-Control-Allow-Methods',
-        'GET, POST, PATCH, PUT, DELETE, OPTIONS'
-    );
-    next();
-});
+// app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader('X-Content-Type-Options: nosniff');
+//     res.setHeader(
+//         'Access-Control-Allow-Headers',
+//         'Origin, X-Requested-With, X-Content-Type-Options: nosniff, Accept, Authorization'
+//     );
+//     res.setHeader(
+//         'Access-Control-Allow-Methods',
+//         'GET, POST, PATCH, PUT, DELETE, OPTIONS'
+//     );
+//     next();
+// });
 
 
 const SMARTCAR_CLIENT_ID = envvar.string('SMARTCAR_CLIENT_ID');
