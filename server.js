@@ -31,7 +31,7 @@ if (!validator.isUUID(SMARTCAR_SECRET)) {
 
 // Redirect uri must be added to the application's allowed redirect uris
 // in the Smartcar developer portal
-const SMARTCAR_REDIRECT_URI = envvar.string('SMARTCAR_REDIRECT_URI', `http://localhost:${PORT}/callback`);
+const SMARTCAR_REDIRECT_URI = envvar.string('SMARTCAR_REDIRECT_URI', `/callback`);
 
 // Setting MODE to "test" will run the Smartcar auth flow in test mode
 const SMARTCAR_MODE = envvar.oneOf('SMARTCAR_MODE', ['test', 'live'], 'test');
