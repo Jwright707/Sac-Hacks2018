@@ -14,7 +14,7 @@ class Dashboard extends React.Component {
         'Mode': 'no-cors'
       },
     };
-    const response = await fetch("http://localhost:5000/request", settings)
+    const response = await fetch("https://polar-mesa-35819.herokuapp.com/request", settings)
     const json = await response
     console.log(json);
   }
