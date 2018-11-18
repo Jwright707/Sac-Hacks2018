@@ -146,18 +146,16 @@ class List extends Component {
   inputChangeHandler(e) {
     let formFields = { ...this.state.formFields };
     formFields[e.target.name] = e.target.value;
-    this.setState({
-      formFields
-    });
+    this.state.formFields = formFields;
   }
 
   formSubmit = formFields => {
-    console.log(formFields);
+    console.log(this.state.formFields);
     axios({
       method: "post",
       url: "http://localhost:5000/api/quests",
       params: {
-        ...formFields
+        ...this.state.formFields
       }
     })
       .then(response => {
