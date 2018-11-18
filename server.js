@@ -35,11 +35,9 @@ mongoose.set('useCreateIndex', true);
 
 app.use('/api/quests/', questRoutes);
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
 
-    next();
-});
+
+
 
 
 const SMARTCAR_CLIENT_ID = envvar.string('SMARTCAR_CLIENT_ID');
@@ -91,6 +89,7 @@ app.set('view engine', '.hbs');
  * Render home page with a "Connect your car" button.
  */
 app.get('/car', function (req, res, next) {
+
 
     res.json([{
         authUrl: client.getAuthUrl(),
@@ -157,11 +156,10 @@ app.get('/callback', function (req, res, next) {
             req.session.vehicles = {};
             req.session.access = access;
             //pass back to front end for user login 
-            res.send(access);
-            res.cookie('id', user.id, { signed: true, httpOnly: true });
+            // res.send(access);;
             // console.log(access)
             // console.log(user.id);
-            return res.redirect('localhost:3000/dashboard');
+            res.redirect('/vehicles');
         })
         .catch(function (err) {
             const message = err.message || `Failed to exchange authorization code for access token`;
@@ -267,7 +265,8 @@ app.post('/request', function (req, res, next) {
 
 });
 
-app.post('/dashboard', function (req, res, next) {
+
+app.get('/dashboard', function (req, res, next) {
     const { access, vehicles } = req.session;
     // res.send(JSON(access));
     if (!access) {
