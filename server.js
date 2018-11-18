@@ -231,7 +231,7 @@ app.get('/vehicles', function (req, res, next) {
  */
 app.post('/request', function (req, res, next) {
     const { access, vehicles } = req.session;
-    // res.send(JSON(access));
+    res.send(JSON(access));
     if (!access) {
         return res.redirect('/');
     }
@@ -282,22 +282,6 @@ app.post('/request', function (req, res, next) {
 });
 
 
-app.get('/dashboard', function (req, res, next) {
-    const { access, vehicles } = req.session;
-    // res.send(JSON(access));
-    if (!access) {
-        return res.redirect('/');
-    }
-
-    const { vehicleId, requestType: type } = req.body;
-    const vehicle = vehicles[vehicleId];
-    const instance = new smartcar.Vehicle(vehicleId, access.accessToken);
-    let data = null;
-
-    instance.location()
-        .then(data => res.json([data, type, vehicle]));
-    return console.log(data);
-});
 
 
 
