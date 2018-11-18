@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { Cookies } from 'react-cookie';
+
+
+
 
 class Dashboard extends React.Component {
   // Initialize the state
@@ -8,25 +12,28 @@ class Dashboard extends React.Component {
   }
 
   // Fetch the list on first mount
-  componentDidMount() {
-    this.getList();
+  componentWillMount() {
+    this.state = { userId: Cookies.load('userId') };
+
   }
 
-  // Retrieves the list of items from the Express app
-  getList = () => {
-    console.log("function to send to back end");
-  };
+  onLogin(userId) {
+    this.setState({ userId });
+    Cookies.save('userId', userId, { path: '/' });
+  }
+
+  onLogout() {
+    Cookies.remove('userId', { path: '/' });
+  }
 
   render() {
+    if (!this.state.userId) {
+      return console.log('this is not logged in ');
+    }
 
-
-    return (
-      <div>
-        This is the DashBoard
-      </div>
-
-    );
+    return <div userId={this.state.userId} />;
   }
-}
+};
+
 
 export default Dashboard;
