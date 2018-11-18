@@ -152,12 +152,12 @@ class List extends Component {
   }
 
   formSubmit = formFields => {
+    console.log(formFields);
     axios({
       method: "post",
       url: "http://localhost:5000/api/quests",
       params: {
-        address: "124 first street woodland ca",
-        body: "hello"
+        ...formFields
       }
     })
       .then(response => {

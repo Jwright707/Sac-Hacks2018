@@ -4,14 +4,42 @@ const gMapClient = require('@google/maps').createClient({
   Promise: Promise
 });
 
+const QuadKey = require('quadkeytools');
+
 exports.createQuest = (req, res, next) => {
     console.log(req.query.address);
-    gMapClient.geocode({address: req.query.address})
+    rewardName = req.query.rewardValue;
+    tokens = [];
+    for(var i = 0; i < req.query.rewardQuantity; i++) {
+      tokens.push({
+        name: rewardName,
+        image: 'asvar aslrhhoewjrelwajeroajera',
+        default: true
+      })
+    }
+    addrString = req.query.questAddress + ' ' + req.query.city +' ' + req.query.city + ' ' + req.query.zipCode;
+    gMapClient.geocode({address: addrString})
     .asPromise()
     .then(response => {
-        console.log(response);
+      console.log(response.json);
+        console.log(response.json.results[0].geometry.location);
+        location = response.json.results[0].geometry.location
+        detail = 16
+        key = QuadKey.locationToQuadkey(location, detail);
         const quest = new Quest({
-            ...req.params.quest,
+          image: '019234jl1kj45o1ij2341oij1234',
+          intro: '<b>A default quest intro</b>',
+          name: req.query.questName,
+          tokens: tokens,
+          description: req.query.description,
+          checkins: [{
+              name: addrString,
+              description: rewardName,
+              hint: 'Use google maps',
+              image: 'oqiwernlxcjvoeworqjlqwkjeroxijfd',
+              quadkeys: [key]
+          }],
+          hash: 'Q'
         });
         return quest.save();
     }).then(createdQuest => {
