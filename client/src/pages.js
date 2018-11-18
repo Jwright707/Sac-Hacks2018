@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { button } from "reactstrap";
+import { Breadcrumb, BreadcrumbItem } from "reactstrap";
+import { Button } from "reactstrap";
 
 class Home extends Component {
   render() {
@@ -8,17 +9,23 @@ class Home extends Component {
       <div className="App">
         <h1>Api Request</h1>
         {/* Link to List.js */}
-        <Link to={"./list"}>
-          <button color="primary" size="lg" variant="raised">
-            Create Quest
-          </button>
-        </Link>
+        <Breadcrumb>
+          <Link to={"./list"}>
+            <BreadcrumbItem>
+              <Button color="primary" size="lg">
+                Create Quest
+              </Button>
+            </BreadcrumbItem>
+          </Link>
 
-        <Link to={"./list2"}>
-          <button color="primary" size="lg" variant="raised">
-            Search Quest
-          </button>
-        </Link>
+          <Link to={"./list2"}>
+            <BreadcrumbItem>
+              <Button color="primary" size="lg">
+                Search Quest
+              </Button>
+            </BreadcrumbItem>
+          </Link>
+        </Breadcrumb>
       </div>
     );
   }

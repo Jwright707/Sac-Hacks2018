@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
+import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import "./App.css";
 import Home from "./pages";
 import List from "./list";
 import List2 from "./list2";
 import Header from "./header";
+// import Navbar from "./navbar";
+import Breadcrumbs from "./breadcrumbs";
 
 class App extends Component {
   render() {
     const App = () => (
       <div>
+        {/* <Navbar /> */}
         <Header />
+        <Breadcrumbs />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/list" component={List} />

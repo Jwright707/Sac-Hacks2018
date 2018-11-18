@@ -2,7 +2,7 @@
   text-align: center;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-ser;
   font-style: italic;
-  font-size: 300%;
+  font-size: 15vh;
 }
 
 .App {
@@ -10,5 +10,5 @@
 }
 
 .LineBreak {
-  opacity: 0.2;
+  opacity: 0.3;
 }
